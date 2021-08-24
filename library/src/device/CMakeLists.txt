@@ -110,8 +110,6 @@ if( STATUS AND NOT STATUS EQUAL 0 )
   message( FATAL_ERROR "Kernel generator failed (list): ${STATUS}")
 endif()
 
-# This is a workaround to use function_pool.cpp as a target output to
-# avoid triggering kernel generation multiple times.
 add_custom_command(OUTPUT ${gen_headers}
   COMMAND ${PYTHON3_EXE} ${kgen}
   --pattern=${GENERATOR_PATTERN}
@@ -179,7 +177,6 @@ foreach( sub RANGE 3 )
   if(NOT SINGLELIB)
     add_library( rocfft-device-${sub}
       ${${rocfft_device_source_var}} )
-
   else()
     # Compile the device lib as a static library, which is then linked
     # into librocfft.so Useful for testing purposes.
