@@ -151,6 +151,7 @@ add_custom_command(
 add_custom_target(gen_headers_target
   DEPENDS ${gen_headers} ${kgen_embed_h}
   VERBATIM
+)
 
 # The following is a list of implementation files defining the library
 set( rocfft_device_source
