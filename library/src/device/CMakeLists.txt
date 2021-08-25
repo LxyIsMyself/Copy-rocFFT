@@ -147,6 +147,11 @@ add_custom_command(
   DEPENDS ${kgen_embed_files}
 )
 
+# add virtual build target for generated kernels
+add_custom_target(gen_headers_target
+  DEPENDS ${gen_headers} ${kgen_embed_h}
+  VERBATIM
+
 # The following is a list of implementation files defining the library
 set( rocfft_device_source
   apply_callback.cpp
@@ -215,6 +220,10 @@ foreach( sub ${sub_libraries} )
   add_library( roc::rocfft-device-${sub} ALIAS rocfft-device-${sub} )
   target_compile_features( rocfft-device-${sub} PRIVATE
     cxx_static_assert cxx_nullptr cxx_auto_type )
+
+  # To help "make" to figure out the dependency, in which make sure
+  # the kernel generator runs only once.
+  add_dependencies(rocfft-device-${sub} gen_headers_target)
 
   if( NOT BUILD_SHARED_LIBS )
     target_link_libraries( rocfft-device-${sub} INTERFACE hip::host )
