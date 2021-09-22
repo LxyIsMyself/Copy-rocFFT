@@ -2,7 +2,7 @@
 
 Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://rocfft.readthedocs.io/en/latest/).
 
-## (Unreleased) rocFFT 1.0.15
+## [rocFFT 1.0.15 ROCm 4.5.0]
 
 ### Changed
 - Re-aligned split device library into 4 roughly equal libraries.
@@ -11,34 +11,13 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
   is no longer performed by each node. We designed a generic algorithm to
   test and pick the best assignment path.
   - With the help of FuseShim, we can achieve more kernel-fusions as possible.
-
+- Split 2D device code into separate libraries.
+- Packaging split into a runtime package called rocfft and a development package called rocfft-devel. The development package depends on runtime. The runtime package suggests the development package for all supported OSes except CentOS 7 to aid in the transition. The suggests feature in packaging is introduced as a deprecated feature and will be removed in a future rocm release.
 ### Optimizations
 - Optimized twiddle-conjugation; complex-to-complex inverse transforms should have similar performance to foward transforms now.
 - Improved performance of single-kernel small 2D transforms.
-
-## (Unreleased) rocFFT 1.0.14
-
-### Optimizations
 - Optimized SBCC kernels of length 52, 60, 72, 80, 84, 96, 104, 108, 112, 160,
   168, 208, 216, 224, 240 with new kernel generator.
-
-### Added
-- Added support for Windows 10 as a build target.
-
-### Changed
-- Packaging split into a runtime package called rocfft and a development package called rocfft-devel. The development package depends on runtime. The runtime package suggests the development package for all supported OSes except CentOS 7 to aid in the transition. The suggests feature in packaging is introduced as a deprecated feature and will be removed in a future rocm release.
-
-### Fixed
-- Fixed a few validation failures of even-length R2C inplace. 2D, 3D cubics sizes such as
-  100^2 (or ^3), 200^2 (or ^3), 256^2 (or ^3)...etc. We don't combine the three kernels
-  (stockham-r2c-transpose). We only combine two kernels (r2c-transpose) instead.
-
-### Changed
-- Split 2D device code into separate libraries.
-
-## [(Unreleased) rocFFT 1.0.13 for ROCm 4.4.0]
-
-### Optimizations
 - Improved many plans by removing unnecessary transpose steps.
 - Optimized scheme selection for 3D problems.
   - Imposed less restrictions on 3D_BLOCK_RC selection. More problems can use 3D_BLOCK_RC and
@@ -50,11 +29,15 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
   in-place and combining pre/post processing into Stockham kernels.
 - Added radix-17.
 
-### Added
-- Added new kernel generator for select fused-2D transforms.
-
 ### Fixed
+- Fixed a few validation failures of even-length R2C inplace. 2D, 3D cubics sizes such as
+  100^2 (or ^3), 200^2 (or ^3), 256^2 (or ^3)...etc. We don't combine the three kernels
+  (stockham-r2c-transpose). We only combine two kernels (r2c-transpose) instead.
 - Improved large 1D transform decompositions.
+
+### Added
+- Added support for Windows 10 as a build target.
+- Added new kernel generator for select fused-2D transforms.
 
 ## [rocFFT 1.0.12 for ROCm 4.3.0]
 
