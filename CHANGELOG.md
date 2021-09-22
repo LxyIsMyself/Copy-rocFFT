@@ -11,7 +11,6 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
   is no longer performed by each node. We designed a generic algorithm to
   test and pick the best assignment path.
   - With the help of FuseShim, we can achieve more kernel-fusions as possible.
-- Split 2D device code into separate libraries.
 - Packaging split into a runtime package called rocfft and a development package called rocfft-devel. The development package depends on runtime. The runtime package suggests the development package for all supported OSes except CentOS 7 to aid in the transition. The suggests feature in packaging is introduced as a deprecated feature and will be removed in a future rocm release.
 ### Optimizations
 - Optimized twiddle-conjugation; complex-to-complex inverse transforms should have similar performance to foward transforms now.
