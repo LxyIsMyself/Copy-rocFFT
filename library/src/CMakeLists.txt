@@ -235,18 +235,20 @@ endif( )
 
 rocm_install_targets(
   TARGETS ${package_targets}
-  INCLUDE
-  ${CMAKE_SOURCE_DIR}/library/include
-  ${CMAKE_BINARY_DIR}/include
-  PREFIX rocfft
+  )
+install(
+  DIRECTORY "${CMAKE_SOURCE_DIR}/library/include/" "${CMAKE_BINARY_DIR}/include/"
+  DESTINATION include/rocfft
+  FILES_MATCHING
+  PATTERN "*.h"
+  PATTERN "*.hpp"
+  PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
   )
 #         PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ
 
 rocm_export_targets(
   TARGETS roc::rocfft
-  PREFIX rocfft
   DEPENDS PACKAGE hip
   NAMESPACE roc::
   )
 
-rocm_install_symlink_subdir( rocfft )
