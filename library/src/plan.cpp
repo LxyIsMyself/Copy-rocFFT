@@ -26,7 +26,7 @@
 #include "node_factory.h"
 #include "private.h"
 #include "repo.h"
-#include "rocfft-version.h"
+#include "rocfft/rocfft-version.h"
 #include "rocfft.h"
 #include "rocfft_ostream.hpp"
 #include "rtc.h"
