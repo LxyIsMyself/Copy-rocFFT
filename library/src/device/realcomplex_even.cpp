@@ -21,7 +21,7 @@
 #include "./kernels/array_format.h"
 #include "./kernels/common.h"
 #include "kernel_launch.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_hip.h"
 
 #include "real2complex.h"

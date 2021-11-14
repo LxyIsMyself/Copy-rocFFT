@@ -32,7 +32,7 @@
 #include <vector>
 
 #include "../shared/printbuffer.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 
 static const size_t ONE_GiB = 1 << 30;
 

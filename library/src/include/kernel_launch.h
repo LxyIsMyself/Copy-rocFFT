@@ -30,7 +30,7 @@
 #include "../../../shared/array_predicate.h"
 #include "../device/kernels/callback.h"
 #include "kargs.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_hip.h"
 #include "tree_node.h"
 #include <iostream>

@@ -22,7 +22,7 @@
 #define ROCFFT_PRINTBUFFER_H
 
 #include "increment.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include <algorithm>
 #include <vector>
 

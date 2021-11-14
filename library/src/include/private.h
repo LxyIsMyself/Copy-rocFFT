@@ -32,7 +32,7 @@
 extern "C" {
 #endif // __cplusplus
 
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 
 DLL_PUBLIC rocfft_status rocfft_plan_create_internal(rocfft_plan             plan,
                                                      rocfft_result_placement placement,

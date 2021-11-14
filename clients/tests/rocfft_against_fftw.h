@@ -28,7 +28,7 @@
 #include <vector>
 
 #include "fftw_transform.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include <hip/hip_runtime.h>
 
 // Return the precision enum for rocFFT based upon the type.

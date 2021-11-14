@@ -27,7 +27,7 @@
 
 #include "accuracy_test.h"
 #include "fftw_transform.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_against_fftw.h"
 
 using ::testing::ValuesIn;

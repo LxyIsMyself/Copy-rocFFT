@@ -29,7 +29,7 @@
 #include "../client_utils.h"
 #include "accuracy_test.h"
 #include "fftw_transform.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_against_fftw.h"
 
 struct callback_test_data

@@ -26,7 +26,7 @@
 #include <vector>
 
 #include "../client_utils.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 
 // This is used to either wrap a HIP function call, or to explicitly check a variable
 // for an error condition.  If an error occurs, we throw.

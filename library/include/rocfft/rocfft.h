@@ -28,7 +28,7 @@
 #define __ROCFFT_H__
 
 #ifdef rocfft_EXPORTS
-#include "rocfft-export.h"
+#include "rocfft/rocfft-export.h"
 #else
 #define ROCFFT_EXPORT
 #endif
