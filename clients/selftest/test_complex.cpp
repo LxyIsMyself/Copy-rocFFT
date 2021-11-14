@@ -21,7 +21,7 @@
 *******************************************************************************/
 
 #include "./basis_vector.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include <gtest/gtest.h>
 #include <stdlib.h>
 

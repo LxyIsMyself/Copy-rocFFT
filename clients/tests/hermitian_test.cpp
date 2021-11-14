@@ -20,7 +20,7 @@
 #include "../../shared/gpubuf.h"
 #include "../client_utils.h"
 #include "accuracy_test.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include <functional>
 #include <gtest/gtest.h>
 #include <hip/hip_runtime.h>

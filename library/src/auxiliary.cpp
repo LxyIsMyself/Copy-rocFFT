@@ -23,7 +23,7 @@
 #include "../../shared/environment.h"
 #include "logging.h"
 #include "repo.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_hip.h"
 #include "rocfft_ostream.hpp"
 #include "rtccache.h"

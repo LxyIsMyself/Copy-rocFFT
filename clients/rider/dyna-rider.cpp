@@ -39,7 +39,7 @@
 
 #include "../../shared/gpubuf.h"
 #include "rider.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;

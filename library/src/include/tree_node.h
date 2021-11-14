@@ -123,7 +123,7 @@ enum FuseType
     FT_STOCKHAM_R2C_TRANSPOSE, // Stokham + post-r2c + transpose (Advance of FT_R2C_TRANSPOSE)
 };
 
-// TODO: move this to rocfft.h and allow users to select via plan description
+// TODO: move this to rocfft/rocfft.h and allow users to select via plan description
 // the decision strategy for buffer assigment
 enum rocfft_optimize_strategy
 {

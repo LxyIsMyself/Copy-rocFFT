@@ -30,7 +30,7 @@
 
 #include "../client_utils.h"
 #include "fftw_transform.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include "rocfft_against_fftw.h"
 
 typedef std::vector<std::vector<char, fftwAllocator<char>>> fftw_data_t;

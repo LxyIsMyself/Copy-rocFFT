@@ -23,7 +23,7 @@
 #ifndef _ROCFFT_OSTREAM_HPP_
 #define _ROCFFT_OSTREAM_HPP_
 
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 #include <cmath>
 #include <complex>
 #include <condition_variable>

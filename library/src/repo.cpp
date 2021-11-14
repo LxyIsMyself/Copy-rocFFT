@@ -28,7 +28,7 @@
 #include "node_factory.h"
 #include "plan.h"
 #include "repo.h"
-#include "rocfft.h"
+#include "rocfft/rocfft.h"
 
 // Implementation of Class Repo
 
