@@ -40,6 +40,7 @@ set( package_targets rocfft rocfft_rtc_helper )
 target_include_directories( rocfft_rtc_helper
   PRIVATE
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/src/include>
+  $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
 )
 target_link_libraries( rocfft_rtc_helper PRIVATE hip::host )
 set_target_properties( rocfft_rtc_helper PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON )
