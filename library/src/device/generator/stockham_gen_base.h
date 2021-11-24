@@ -61,7 +61,7 @@ struct StockhamKernel : public StockhamGeneratorSpecs
             }
         }
 
-        batches_per_block = LDS_BYTE_LIMIT / bytes_per_batch;
+        auto batches_per_block = LDS_BYTE_LIMIT / bytes_per_batch;
         while(threads_per_transform * batches_per_block > threads_per_block)
             --batches_per_block;
         if(!factors2d.empty())
@@ -77,7 +77,6 @@ struct StockhamKernel : public StockhamGeneratorSpecs
     virtual ~StockhamKernel(){};
 
     unsigned int nregisters;
-    unsigned int batches_per_block;
     unsigned int transforms_per_block;
 
     // data that may be overridden by subclasses (different tiling types)
@@ -338,8 +337,10 @@ struct StockhamKernel : public StockhamGeneratorSpecs
         return {Butterfly{true, args}};
     }
 
-    StatementList
-        load_global_generator(unsigned int h, unsigned int hr, unsigned int width, unsigned int dt)
+    StatementList load_global_generator(unsigned int h,
+                                        unsigned int hr,
+                                        unsigned int width,
+                                        unsigned int dt) const
     {
         if(hr == 0)
             hr = h;
@@ -669,7 +670,7 @@ struct StockhamKernel : public StockhamGeneratorSpecs
                      generator,
         unsigned int width,
         double       height,
-        bool         guard = false)
+        bool         guard = false) const
     {
         StatementList stmts;
         unsigned int  iheight = floor(height);
