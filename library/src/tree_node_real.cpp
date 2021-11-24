@@ -928,12 +928,14 @@ void Real3DEvenNode::Build_solution()
     if(inArrayType != rocfft_array_type_real)
     {
         // FIXME:
-        //    Currently, BuildTree_internal_SBCR and AssignParams_internal_SBCR
-        //    support unit strides only. We might want to differentiate
-        //    implementation for unit/non-unit strides cases both on host and
-        //    device side.
+        //    1. Currently, BuildTree_internal_SBCR and AssignParams_internal_SBCR
+        //       support unit strides only. We might want to differentiate
+        //       implementation for unit/non-unit strides cases both on host and
+        //       device side.
+        //    2. Enable for gfx908 and gfx90a only. Need more tuning for Navi arch.
         std::vector<size_t> c2r_length = {length[0] / 2, length[1], length[2]};
-        if((SBCR_dim_available(c2r_length, 0, precision))
+        if((is_device_gcn_arch(deviceProp, "gfx908") || is_device_gcn_arch(deviceProp, "gfx90a"))
+           && (SBCR_dim_available(c2r_length, 0, precision))
            && (SBCR_dim_available(c2r_length, 1, precision))
            && (SBCR_dim_available(c2r_length, 2, precision))
            && (placement
@@ -1042,8 +1044,6 @@ void Real3DEvenNode::BuildTree_internal_SBCC()
 
 void Real3DEvenNode::BuildTree_internal_SBCR()
 {
-    std::vector<size_t> C2R_length = {length[0] / 2 + 1, length[1], length[2]};
-
     auto sbcrZ       = NodeFactory::CreateNodeFromScheme(CS_KERNEL_STOCKHAM_BLOCK_CR, this);
     sbcrZ->length    = {length[2], (length[0] / 2 + 1) * length[1]};
     sbcrZ->dimension = 1;
