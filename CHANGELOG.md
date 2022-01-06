@@ -21,7 +21,7 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
 ### Removed
 - The hipFFT API (header) has been removed from after a long deprecation period.  Please use the [hipFFT](https://github.com/ROCmSoftwarePlatform/hipFFT) package/repository to obtain the hipFFT API.
 
-## (Unreleased) rocFFT 1.0.15
+## rocFFT 1.0.15
 
 ### Changed
 - Re-aligned split device library into 4 roughly equal libraries.
@@ -29,15 +29,15 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
 - Implemented the generic buffer-assignment framework. The buffer assignment
   is no longer performed by each node. We designed a generic algorithm to
   test and pick the best assignment path.
-  - With the help of FuseShim, we can achieve more kernel-fusions as possible.
-  Do not read the imaginary part of the DC and Nyquist modes for even-length
+  With the help of FuseShim, we can achieve more kernel-fusions as possible.
+- Do not read the imaginary part of the DC and Nyquist modes for even-length
   complex-to-real transforms.
 
 ### Optimizations
 - Optimized twiddle-conjugation; complex-to-complex inverse transforms should have similar performance to foward transforms now.
 - Improved performance of single-kernel small 2D transforms.
 
-## (Unreleased) rocFFT 1.0.14
+## rocFFT 1.0.14
 
 ### Optimizations
 - Optimized SBCC kernels of length 52, 60, 72, 80, 84, 96, 104, 108, 112, 160,
