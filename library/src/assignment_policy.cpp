@@ -212,7 +212,17 @@ bool AssignmentPolicy::ValidOutBuffer(ExecPlan&           execPlan,
                 nodeLen.front() *= 2;
         }
 
-        if(BufferIsUnitStride(execPlan, buffer))
+        // TODO: SBCC kernel lengths aren't row-major, but they also
+        // don't set explicit row-major output lengths.  This breaks
+        // the decomposition check below this block.  We could set
+        // those RM lengths, but we would need further refactors
+        // since transpose and SBCC kernels currently disagree on how
+        // outStride and RM output length fit together.
+        //
+        // Work around this problem by doing the simple space check
+        // for SBCC, since we should only be using that kernel in
+        // places where that check is sufficient.
+        if(BufferIsUnitStride(execPlan, buffer) || node.scheme == CS_KERNEL_STOCKHAM_BLOCK_CC)
         {
             // just check if there's enough space
             return std::accumulate(nodeLen.begin(),
