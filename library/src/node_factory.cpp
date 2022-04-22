@@ -607,6 +607,13 @@ ComputeScheme NodeFactory::Decide3DScheme(NodeMetaData& nodeData)
             return CS_3D_TRTRTR;
         }
 
+        // a workaround to disable sbcc-243 on gfx90a when 243^3
+        if(childScheme == CS_2D_RC && nodeData.length[1] == 243
+           && is_device_gcn_arch(nodeData.deviceProp, "gfx90a"))
+        {
+            return CS_3D_TRTRTR;
+        }
+
         return CS_3D_RTRT;
     }
     // TODO: CS_KERNEL_3D_SINGLE?
