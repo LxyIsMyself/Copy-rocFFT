@@ -2,7 +2,7 @@
 
 Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://rocfft.readthedocs.io/en/latest/).
 
-## (Unreleased) rocFFT 1.0.17
+## rocFFT 1.0.17 for ROCm 5.2.0
 ### Added
 - Packages for test and benchmark executables on all supported OSes using CPack.
 - Added File/Folder Reorg Changes with backward compatibility support using ROCM-CMAKE wrapper functions.
@@ -19,7 +19,7 @@ Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://ro
 ### Fixed
 - Fixed plan creation failure in cases where SBCC kernels would need to write to non-unit-stride buffers.
 
-## rocFFT 1.0.16  for ROCm 5.1.0
+## rocFFT 1.0.16 for ROCm 5.1.0
 
 ### Changed
 - Supported unaligned tile dimension for SBRC_2D kernels.
