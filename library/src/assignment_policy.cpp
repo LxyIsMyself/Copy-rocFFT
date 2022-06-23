@@ -1103,6 +1103,14 @@ void AssignmentPolicy::PadPlan(ExecPlan& execPlan)
                 // SBCR plans combine higher dimensions in ways that confuse padding
                 if(u.node.scheme == CS_KERNEL_STOCKHAM_BLOCK_CR)
                     return;
+                // transpose kernels don't handle arbitrary strides,
+                // and with 4 or more lengths either choice of
+                // padding dim will trigger incorrect behaviour
+                if((u.node.scheme == CS_KERNEL_TRANSPOSE
+                    || u.node.scheme == CS_KERNEL_TRANSPOSE_XY_Z
+                    || u.node.scheme == CS_KERNEL_TRANSPOSE_Z_XY)
+                   && u.node.length.size() > 3)
+                    return;
             }
 
             // Ensure that if we're forced to pad along one dimension
