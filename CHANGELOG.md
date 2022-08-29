@@ -2,7 +2,7 @@
 
 Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://rocfft.readthedocs.io/en/latest/).
 
-## (Unreleased) rocFFT 1.0.18
+## rocFFT 1.0.18 for ROCm 5.3.0
 
 ### Changed
 - Runtime compilation cache now looks for environment variables XDG_CACHE_HOME (on Linux) and LOCALAPPDATA (on
