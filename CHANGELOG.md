@@ -2,6 +2,11 @@
 
 Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://rocfft.readthedocs.io/en/latest/).
 
+## rocFFT 1.0.20 for ROCm 5.4.1
+
+### Fixed
+- Fixed incorrect results on strided large 1D FFTs where batch size does not equal the stride.
+
 ## rocFFT 1.0.19 for ROCm 5.4.0
 
 ### Optimizations
