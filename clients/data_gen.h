@@ -31,6 +31,7 @@
 #include <hiprand/hiprand.h>
 #include <hiprand/hiprand_kernel.h>
 #include <vector>
+#include <complex>
 
 static const unsigned int DATA_GEN_THREADS = 32;
 
