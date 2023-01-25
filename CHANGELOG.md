@@ -2,6 +2,11 @@
 
 Full documentation for rocFFT is available at [rocfft.readthedocs.io](https://rocfft.readthedocs.io/en/latest/).
 
+## rocFFT 1.0.21 for ROCm 5.4.3
+
+### Fixed
+- Removed source directory from rocm_install_targets call to prevent installation of rocfft.h in an unintended location.
+
 ## rocFFT 1.0.20 for ROCm 5.4.1
 
 ### Fixed
