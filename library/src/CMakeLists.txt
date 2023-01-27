@@ -430,7 +430,6 @@ endif( )
 rocm_install_targets(
   TARGETS ${package_targets}
   INCLUDE
-  ${CMAKE_SOURCE_DIR}/library/include
   ${CMAKE_BINARY_DIR}/include
   )
 
@@ -461,4 +460,3 @@ if(BUILD_FILE_REORG_BACKWARD_COMPATIBILITY AND NOT WIN32)
         DESTINATION "." )
   message( STATUS "Backward Compatible Sym Link Created for include directories" )
 endif()
-
