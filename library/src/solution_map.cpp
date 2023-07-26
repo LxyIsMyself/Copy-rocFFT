@@ -31,7 +31,7 @@
 
 namespace fs = std::filesystem;
 
-static std::regex regEx("[^:;,\"\\{\\}\\[\\s]+", std::regex_constants::optimize);
+#define REGEX "[^:;,\"\\{\\}\\[\\s]+"
 
 static const char* def_solution_map_path = "rocfft_solution_map.dat";
 
@@ -477,6 +477,8 @@ size_t solution_map::add_solution(const ProblemKey&   probKey,
 // parse the format version of the input file, call by converter
 bool solution_map::get_solution_map_version(const fs::path& sol_map_in_path)
 {
+    static std::regex regEx(REGEX, std::regex_constants::optimize);
+
     if(LOG_TRACE_ENABLED())
         (*LogSingleton::GetInstance().GetTraceOS())
             << "reading solution map data from: " << sol_map_in_path.c_str() << std::endl;
@@ -505,6 +507,8 @@ bool solution_map::get_solution_map_version(const fs::path& sol_map_in_path)
 // read the map from input stream
 bool solution_map::read_solution_map_data(const fs::path& sol_map_in_path, bool primary_map)
 {
+    static std::regex regEx(REGEX, std::regex_constants::optimize);
+
     if(LOG_TRACE_ENABLED())
         (*LogSingleton::GetInstance().GetTraceOS())
             << "reading solution map data from: " << sol_map_in_path.c_str() << std::endl;
