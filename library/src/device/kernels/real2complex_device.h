@@ -33,7 +33,7 @@ __device__ inline void post_process_interleaved(const size_t    idx_p,
                                                 const Tcomplex* twiddles,
                                                 void* __restrict__ load_cb_fn,
                                                 void* __restrict__ load_cb_data,
-                                                uint32_t load_cb_lds_bytes,
+                                                __hip_uint32_t load_cb_lds_bytes,
                                                 void* __restrict__ store_cb_fn,
                                                 void* __restrict__ store_cb_data,
                                                 const real_type_t<Tcomplex> scale_factor = 0.0)
@@ -113,7 +113,7 @@ __device__ inline void post_process_interleaved_inplace(const size_t idx_p,
                                                         const T*     twiddles,
                                                         void* __restrict__ load_cb_fn,
                                                         void* __restrict__ load_cb_data,
-                                                        uint32_t load_cb_lds_bytes,
+                                                        __hip_uint32_t load_cb_lds_bytes,
                                                         void* __restrict__ store_cb_fn,
                                                         void* __restrict__ store_cb_data)
 {

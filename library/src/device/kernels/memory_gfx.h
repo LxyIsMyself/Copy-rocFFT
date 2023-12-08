@@ -99,13 +99,13 @@ struct alignas(16) BufferResource
 {
     union Desc
     {
-        int32x4_t d128;
-        void*     d64[2];
-        uint32_t  d32[4];
+        int32x4_t      d128;
+        void*          d64[2];
+        __hip_uint32_t d32[4];
     };
 
     ROCFFT_DEVICE
-    BufferResource(void const* base_addr, uint32_t num_records = (0xFFFFFFFF - 1))
+    BufferResource(void const* base_addr, __hip_uint32_t num_records = (0xFFFFFFFF - 1))
     {
         // Reference:
         //   For CDNA: see section 9.1.8 in the AMD resources
@@ -149,82 +149,82 @@ struct alignas(16) BufferResource
 
 // 1 byte
 __device__ char
-    llvm_amdgcn_raw_buffer_load_i8(int32x4_t buffer_resource,
-                                   uint32_t  voffset,
-                                   uint32_t  soffset,
-                                   int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.load.i8");
+    llvm_amdgcn_raw_buffer_load_i8(int32x4_t      buffer_resource,
+                                   __hip_uint32_t voffset,
+                                   __hip_uint32_t soffset,
+                                   __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.load.i8");
 
 // 2 bytes
-__device__ float16_t
-    llvm_amdgcn_raw_buffer_load_f16(int32x4_t buffer_resource,
-                                    uint32_t  voffset,
-                                    uint32_t  soffset,
-                                    int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.load.f16");
+__device__ float16_t llvm_amdgcn_raw_buffer_load_f16(
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.load.f16");
 
 // 4 bytes
-__device__ float32_t
-    llvm_amdgcn_raw_buffer_load_f32(int32x4_t buffer_resource,
-                                    uint32_t  voffset,
-                                    uint32_t  soffset,
-                                    int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.load.f32");
+__device__ float32_t llvm_amdgcn_raw_buffer_load_f32(
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.load.f32");
 
 // 8 bytes
-__device__ float32x2_t
-    llvm_amdgcn_raw_buffer_load_f32x2(int32x4_t buffer_resource,
-                                      uint32_t  voffset,
-                                      uint32_t  soffset,
-                                      int32_t cache_op) __asm("llvm.amdgcn.raw.buffer.load.v2f32");
+__device__ float32x2_t llvm_amdgcn_raw_buffer_load_f32x2(
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.load.v2f32");
 
 // 16 bytes
-__device__ float32x4_t
-    llvm_amdgcn_raw_buffer_load_f32x4(int32x4_t buffer_resource,
-                                      uint32_t  voffset,
-                                      uint32_t  soffset,
-                                      int32_t cache_op) __asm("llvm.amdgcn.raw.buffer.load.v4f32");
+__device__ float32x4_t llvm_amdgcn_raw_buffer_load_f32x4(
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.load.v4f32");
 
 ///
 /// Store
 ///
 
 // 1 byte
-__device__ void
-    llvm_amdgcn_raw_buffer_store_i8(char      data,
-                                    int32x4_t buffer_resource,
-                                    uint32_t  voffset,
-                                    uint32_t  soffset,
-                                    int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.store.i8");
+__device__ void llvm_amdgcn_raw_buffer_store_i8(
+    char           data,
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.store.i8");
 
 // 2 bytes
-__device__ void
-    llvm_amdgcn_raw_buffer_store_f16(float16_t data,
-                                     int32x4_t buffer_resource,
-                                     uint32_t  voffset,
-                                     uint32_t  soffset,
-                                     int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.store.f16");
+__device__ void llvm_amdgcn_raw_buffer_store_f16(
+    float16_t      data,
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.store.f16");
 
 // 4 bytes
-__device__ void
-    llvm_amdgcn_raw_buffer_store_f32(float32_t data,
-                                     int32x4_t buffer_resource,
-                                     uint32_t  voffset,
-                                     uint32_t  soffset,
-                                     int32_t   cache_op) __asm("llvm.amdgcn.raw.buffer.store.f32");
+__device__ void llvm_amdgcn_raw_buffer_store_f32(
+    float32_t      data,
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.store.f32");
 
 // 8 bytes
 __device__ void llvm_amdgcn_raw_buffer_store_f32x2(
-    float32x2_t data,
-    int32x4_t   buffer_resource,
-    uint32_t    voffset,
-    uint32_t    soffset,
-    int32_t     cache_op) __asm("llvm.amdgcn.raw.buffer.store.v2f32");
+    float32x2_t    data,
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.store.v2f32");
 
 // 16 bytes
 __device__ void llvm_amdgcn_raw_buffer_store_f32x4(
-    float32x4_t data,
-    int32x4_t   buffer_resource,
-    uint32_t    voffset,
-    uint32_t    soffset,
-    int32_t     cache_op) __asm("llvm.amdgcn.raw.buffer.store.v4f32");
+    float32x4_t    data,
+    int32x4_t      buffer_resource,
+    __hip_uint32_t voffset,
+    __hip_uint32_t soffset,
+    __hip_int32_t  cache_op) __asm("llvm.amdgcn.raw.buffer.store.v4f32");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -244,8 +244,11 @@ struct buffer_load<AccessType, 1, cache_op>
     buffer_load() {}
 
     ROCFFT_DEVICE
-    buffer_load(
-        AccessType& D, void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    buffer_load(AccessType&    D,
+                void const*    base_ptr,
+                __hip_uint32_t voffset,
+                __hip_uint32_t soffset,
+                bool           pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset  = pred_guard ? voffset : -1;
@@ -255,7 +258,8 @@ struct buffer_load<AccessType, 1, cache_op>
     }
 
     ROCFFT_DEVICE
-    AccessType load(void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    AccessType
+        load(void const* base_ptr, __hip_uint32_t voffset, __hip_uint32_t soffset, bool pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset  = pred_guard ? voffset : -1;
@@ -272,8 +276,11 @@ struct buffer_load<AccessType, 2, cache_op>
     buffer_load() {}
 
     ROCFFT_DEVICE
-    buffer_load(
-        AccessType& D, void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    buffer_load(AccessType&    D,
+                void const*    base_ptr,
+                __hip_uint32_t voffset,
+                __hip_uint32_t soffset,
+                bool           pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset       = pred_guard ? voffset : -1;
@@ -283,7 +290,8 @@ struct buffer_load<AccessType, 2, cache_op>
     }
 
     ROCFFT_DEVICE
-    AccessType load(void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    AccessType
+        load(void const* base_ptr, __hip_uint32_t voffset, __hip_uint32_t soffset, bool pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset       = pred_guard ? voffset : -1;
@@ -300,8 +308,11 @@ struct buffer_load<AccessType, 4, cache_op>
     buffer_load() {}
 
     ROCFFT_DEVICE
-    buffer_load(
-        AccessType& D, void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    buffer_load(AccessType&    D,
+                void const*    base_ptr,
+                __hip_uint32_t voffset,
+                __hip_uint32_t soffset,
+                bool           pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset       = pred_guard ? voffset : -1;
@@ -311,7 +322,8 @@ struct buffer_load<AccessType, 4, cache_op>
     }
 
     ROCFFT_DEVICE
-    AccessType load(void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    AccessType
+        load(void const* base_ptr, __hip_uint32_t voffset, __hip_uint32_t soffset, bool pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset       = pred_guard ? voffset : -1;
@@ -328,8 +340,11 @@ struct buffer_load<AccessType, 8, cache_op>
     buffer_load() {}
 
     ROCFFT_DEVICE
-    buffer_load(
-        AccessType& D, void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    buffer_load(AccessType&    D,
+                void const*    base_ptr,
+                __hip_uint32_t voffset,
+                __hip_uint32_t soffset,
+                bool           pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset         = pred_guard ? voffset : -1;
@@ -339,7 +354,8 @@ struct buffer_load<AccessType, 8, cache_op>
     }
 
     ROCFFT_DEVICE
-    AccessType load(void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    AccessType
+        load(void const* base_ptr, __hip_uint32_t voffset, __hip_uint32_t soffset, bool pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset         = pred_guard ? voffset : -1;
@@ -356,8 +372,11 @@ struct buffer_load<AccessType, 16, cache_op>
     buffer_load() {}
 
     ROCFFT_DEVICE
-    buffer_load(
-        AccessType& D, void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    buffer_load(AccessType&    D,
+                void const*    base_ptr,
+                __hip_uint32_t voffset,
+                __hip_uint32_t soffset,
+                bool           pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset         = pred_guard ? voffset : -1;
@@ -367,7 +386,8 @@ struct buffer_load<AccessType, 16, cache_op>
     }
 
     ROCFFT_DEVICE
-    AccessType load(void const* base_ptr, uint32_t voffset, uint32_t soffset, bool pred_guard)
+    AccessType
+        load(void const* base_ptr, __hip_uint32_t voffset, __hip_uint32_t soffset, bool pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
         voffset         = pred_guard ? voffset : -1;
@@ -394,8 +414,8 @@ struct buffer_store<AccessType, 1, cache_op>
     ROCFFT_DEVICE
     buffer_store(const AccessType& D,
                  void const*       base_ptr,
-                 uint32_t          voffset,
-                 uint32_t          soffset,
+                 __hip_uint32_t    voffset,
+                 __hip_uint32_t    soffset,
                  bool              pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
@@ -412,8 +432,8 @@ struct buffer_store<AccessType, 2, cache_op>
     ROCFFT_DEVICE
     buffer_store(const AccessType& D,
                  void const*       base_ptr,
-                 uint32_t          voffset,
-                 uint32_t          soffset,
+                 __hip_uint32_t    voffset,
+                 __hip_uint32_t    soffset,
                  bool              pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
@@ -430,8 +450,8 @@ struct buffer_store<AccessType, 4, cache_op>
     ROCFFT_DEVICE
     buffer_store(const AccessType& D,
                  void const*       base_ptr,
-                 uint32_t          voffset,
-                 uint32_t          soffset,
+                 __hip_uint32_t    voffset,
+                 __hip_uint32_t    soffset,
                  bool              pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
@@ -448,8 +468,8 @@ struct buffer_store<AccessType, 8, cache_op>
     ROCFFT_DEVICE
     buffer_store(const AccessType& D,
                  void const*       base_ptr,
-                 uint32_t          voffset,
-                 uint32_t          soffset,
+                 __hip_uint32_t    voffset,
+                 __hip_uint32_t    soffset,
                  bool              pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);
@@ -466,8 +486,8 @@ struct buffer_store<AccessType, 16, cache_op>
     ROCFFT_DEVICE
     buffer_store(const AccessType& D,
                  void const*       base_ptr,
-                 uint32_t          voffset,
-                 uint32_t          soffset,
+                 __hip_uint32_t    voffset,
+                 __hip_uint32_t    soffset,
                  bool              pred_guard)
     {
         BufferResource buffer_rsc(base_ptr);

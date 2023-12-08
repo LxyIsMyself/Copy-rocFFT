@@ -162,8 +162,8 @@ __device__ void intrinsic_load_to_dest(
 #ifdef USE_GFX_BUFFER_INTRINSIC
     buffer_load<T, sizeof(T)>(target,
                               reinterpret_cast<void*>(const_cast<T*>(data)),
-                              (uint32_t)(voffset * sizeof(T)),
-                              (uint32_t)(soffset * sizeof(T)),
+                              (__hip_uint32_t)(voffset * sizeof(T)),
+                              (__hip_uint32_t)(soffset * sizeof(T)),
                               rw);
 #else
     target = rw ? data[soffset + voffset] : target;
@@ -175,8 +175,8 @@ __device__ T intrinsic_load(const T* data, unsigned int voffset, unsigned int so
 {
 #ifdef USE_GFX_BUFFER_INTRINSIC
     return buffer_load<T, sizeof(T)>().load(reinterpret_cast<void*>(const_cast<T*>(data)),
-                                            (uint32_t)(voffset * sizeof(T)),
-                                            (uint32_t)(soffset * sizeof(T)),
+                                            (__hip_uint32_t)(voffset * sizeof(T)),
+                                            (__hip_uint32_t)(soffset * sizeof(T)),
                                             rw);
 #else
     return rw ? data[soffset + voffset] : T();
@@ -190,13 +190,13 @@ __device__ rocfft_complex<Tfloat> intrinsic_load_planar(
 #ifdef USE_GFX_BUFFER_INTRINSIC
     return rocfft_complex<Tfloat>{buffer_load<Tfloat, sizeof(Tfloat)>().load(
                                       reinterpret_cast<void*>(const_cast<Tfloat*>(dataRe)),
-                                      (uint32_t)(voffset * sizeof(Tfloat)),
-                                      (uint32_t)(soffset * sizeof(Tfloat)),
+                                      (__hip_uint32_t)(voffset * sizeof(Tfloat)),
+                                      (__hip_uint32_t)(soffset * sizeof(Tfloat)),
                                       rw),
                                   buffer_load<Tfloat, sizeof(Tfloat)>().load(
                                       reinterpret_cast<void*>(const_cast<Tfloat*>(dataIm)),
-                                      (uint32_t)(voffset * sizeof(Tfloat)),
-                                      (uint32_t)(soffset * sizeof(Tfloat)),
+                                      (__hip_uint32_t)(voffset * sizeof(Tfloat)),
+                                      (__hip_uint32_t)(soffset * sizeof(Tfloat)),
                                       rw)};
 #else
     return rw ? rocfft_complex<Tfloat>{dataRe[soffset + voffset], dataIm[soffset + voffset]}
@@ -211,8 +211,8 @@ __device__ void
 #ifdef USE_GFX_BUFFER_INTRINSIC
     buffer_store<T, sizeof(T)>(element,
                                reinterpret_cast<void*>(const_cast<T*>(data)),
-                               (uint32_t)(voffset * sizeof(T)),
-                               (uint32_t)(soffset * sizeof(T)),
+                               (__hip_uint32_t)(voffset * sizeof(T)),
+                               (__hip_uint32_t)(soffset * sizeof(T)),
                                rw);
 #else
     if(rw)
@@ -231,13 +231,13 @@ __device__ void store_intrinsic_planar(Tfloat*                dataRe,
 #ifdef USE_GFX_BUFFER_INTRINSIC
     buffer_store<Tfloat, sizeof(Tfloat)>(element.x,
                                          reinterpret_cast<void*>(const_cast<Tfloat*>(dataRe)),
-                                         (uint32_t)(voffset * sizeof(Tfloat)),
-                                         (uint32_t)(soffset * sizeof(Tfloat)),
+                                         (__hip_uint32_t)(voffset * sizeof(Tfloat)),
+                                         (__hip_uint32_t)(soffset * sizeof(Tfloat)),
                                          rw);
     buffer_store<Tfloat, sizeof(Tfloat)>(element.y,
                                          reinterpret_cast<void*>(const_cast<Tfloat*>(dataIm)),
-                                         (uint32_t)(voffset * sizeof(Tfloat)),
-                                         (uint32_t)(soffset * sizeof(Tfloat)),
+                                         (__hip_uint32_t)(voffset * sizeof(Tfloat)),
+                                         (__hip_uint32_t)(soffset * sizeof(Tfloat)),
                                          rw);
 #else
     if(rw)
