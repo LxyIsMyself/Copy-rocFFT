@@ -9,6 +9,10 @@ Documentation for rocFFT is available at
 
 * Fixed kernel launch failure on execute of very large odd-length real-complex transforms.
 
+### Additions
+
+* Enable multi-gpu testing on systems without direct GPU-interconnects
+
 ## rocFFT 1.0.26 for ROCm 6.1.0
 
 ### Changes
